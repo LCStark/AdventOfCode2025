@@ -10,15 +10,11 @@ fn is_valid(id: &str) -> bool {
     
     let (first, second) = id.split_at(length / 2);
     
-    if first == second {
-        false
-    } else {
-        true
-    }
+    first != second
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let file = File::open("test_input")?;
+    let file = File::open("input")?;
     let reader = BufReader::new(file);
     
     let data: String = reader.lines().map(|l| l.unwrap()).collect::<Vec<_>>().into_iter().collect();
